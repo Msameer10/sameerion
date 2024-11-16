@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Samineon</title>
+	<title>Sameerion</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta charset="utf-8">
 <!-- Favicon -->
@@ -19,13 +19,14 @@
 
 <div class="section">
   <div class="fixed">
-    <div class="large"><a class="logo" href="index.html"><h1 class="fade-in"><font class="h1one">Sami</font><font class="h1two">neon</font></h1></a></div>
+    <div class="large"><a class="logo" href="index.html"><h1 class="fade-in">Sameerion</h1></a></div>
   </div>
   <div class="arrow-down"></div>
 </div>
-<div class="section">
+<div class="section" id="dynamic-section">
   <div class="fixed">
-    <p class="align-left">Hello!</p>I am currently pursuing a Master's in Data Science, driven by my profound passion for computers and data analysis. As an aspiring data scientist, I have dedicated myself to unraveling the mysteries hidden within datasets, employing machine learning algorithms, and creating data-driven solutions. This portfolio showcases my journey and projects, reflecting my enthusiasm for the world of data and my aspiration to make a meaningful impact in the field.
+    <p class="align-left">Hey there <span id="dynamicWord" class="dynamic-word"></span>,</p>
+    I’ve always been captivated by the stories data can tell, the layers of history waiting to be uncovered, the wonders of aviation that are ready to take to skies, and the immersive worlds of games. &emsp; This space is a reflection of my journey—blending curiosity, problem-solving, and creativity. Whether I’m exploring patterns in datasets, diving into historical events, or imagining new possibilities, I’m driven by a desire to learn, connect, and create something meaningful.
   </div>
 </div>
 <div class="section">
@@ -51,16 +52,17 @@
 </div>
 <div class="section">
   <div class="p fixed">
-  <p class="links"><a href="https://maerifa.samineon.com/"><span class="subtxt1">Ma</span><span class="subtxt2">'rifa</span></a></p>
-  <p class="links mt-5"><a href="https://neocyclopedia.samineon.com/"><span class="subtxt6">Neocyclopedia</span></a></p>
+    my other works:<br><br>
+  <p class="links"><a href="https://maerifa.sameerion.com/"><span class="subtxt1">Ma</span><span class="subtxt2">'rifa</span></a></p>
+  <p class="links mt-5"><a href="https://neocyclopedia.sameerion.com/"><span class="subtxt6">Neocyclopedia</span></a></p>
   <p class="links mt-5"><a href="https://msameer10.github.io/tashriiwaluhati/"><span class="subtxt7">Tashrī'ī wa Luḥatī</span></a></p>
-  <p class="links mt-5"><a href="https://qi.samineon.com/"><span class="subtxt8">Quaestus Intelligentiae</span></a></p>
+  <p class="links mt-5"><a href="https://qi.sameerion.com/"><span class="subtxt8">Quaestus Intelligentiae</span></a></p>
   </div>
 </div>
 <div class="section">
 <div class="footer fixed">
 
-  <p>Copyright &copy; <span id="cprtxt" style="font-family: Arial, sans-serif;"></span><span id="cprtxt"> Samineon</span>. All rights reserved.</p>
+  <p>Copyright &copy; <span id="cprtxt" style="font-family: Arial, sans-serif;"></span><span id="cprtxt"> Sameerion</span>. All rights reserved.</p>
 </div>
 </div>
 
@@ -72,6 +74,38 @@
     if (copyrightYearElement) {
       copyrightYearElement.textContent = currentYear;
     }
+  });
+
+  // word changer
+
+  document.addEventListener("DOMContentLoaded", function () {
+    const words = ["stranger!", "friend!", "explorer!", "learner!", "thinker!", "creator!", "foe..? (please, don't be one)"];
+    let currentWordIndex = 0;
+    const wordElement = document.getElementById("dynamicWord");
+    let wordChangeInterval;
+
+    // Function to change the word
+    function changeWord() {
+      wordElement.textContent = words[currentWordIndex];
+      currentWordIndex = (currentWordIndex + 1) % words.length; // Cycle through words
+    }
+
+    // Start changing words when the section comes into view
+    const section = document.getElementById("dynamic-section");
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Start the word change when section is visible
+          wordChangeInterval = setInterval(changeWord, 3000); // Change word every 3 seconds
+        } else {
+          // Stop the word change when section is not visible
+          clearInterval(wordChangeInterval);
+        }
+      });
+    }, { threshold: 0.5 }); // Trigger when 50% of the section is in view
+
+    observer.observe(section); // Observe the section with the dynamic word
   });
 </script>
 
