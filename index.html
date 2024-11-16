@@ -21,12 +21,17 @@
   <div class="fixed">
     <div class="large"><a class="logo" href="index.html"><h1 class="fade-in">Sameerion</h1></a></div>
   </div>
+    <!-- Scroll Down Text -->
+  <!-- Scroll Down Text -->
+  <div id="scroll-down-text" style="display: none; position: absolute; bottom: 25px; left: 50%; transform: translateX(-50%); font-size: 16px; color: #333; opacity: 0; transition: opacity 1s; animation: bob 1.5s ease-in-out infinite;">
+    scroll down to explore
+  </div>
   <div class="arrow-down"></div>
 </div>
 <div class="section" id="dynamic-section">
   <div class="fixed">
     <p class="align-left">Hey there <span id="dynamicWord" class="dynamic-word"></span>,</p>
-    I’ve always been captivated by the stories data can tell, the layers of history waiting to be uncovered, the wonders of aviation that are ready to take to skies, and the immersive worlds of games. &emsp; This space is a reflection of my journey—blending curiosity, problem-solving, and creativity. Whether I’m exploring patterns in datasets, diving into historical events, or imagining new possibilities, I’m driven by a desire to learn, connect, and create something meaningful.
+    I am Mohammad <span style="color: red;">Sameer</span>, I’ve always been captivated by the stories data can tell, the layers of history waiting to be uncovered, the wonders of aviation that are ready to take to skies, and the immersive worlds of games. &emsp; This space is a reflection of my journey—blending curiosity, problem-solving, and creativity. Whether I’m exploring patterns in datasets, diving into historical events, or imagining new possibilities, I’m driven by a desire to learn, connect, and create something meaningful.
   </div>
 </div>
 <div class="section">
@@ -47,12 +52,19 @@
 <div class="section">
   <div class="p fixed">Eyes on the skies, there's wonder in every corner of space.</div>
 </div>
-<div class="section">
-  <div class="p fixed">This celestial stage is where the cosmos takes center spotlight.</div>
+<div class="section" id="contact">
+  <div class="p fixed">
+    <p style="font-size: 1.3em;">Want to connect or have questions?<br><br>Feel free to reach out!</p><br>
+    <a href="mailto:mo.saeer100@gmail.com">
+      <button>
+        Contact Me
+      </button>
+    </a>
+  </div>
 </div>
 <div class="section">
   <div class="p fixed">
-    my other works:<br><br>
+    <span style="font-size: 1.4em;">my other works:</span><br><br><br>
   <p class="links"><a href="https://maerifa.sameerion.com/"><span class="subtxt1">Ma</span><span class="subtxt2">'rifa</span></a></p>
   <p class="links mt-5"><a href="https://neocyclopedia.sameerion.com/"><span class="subtxt6">Neocyclopedia</span></a></p>
   <p class="links mt-5"><a href="https://msameer10.github.io/tashriiwaluhati/"><span class="subtxt7">Tashrī'ī wa Luḥatī</span></a></p>
@@ -61,8 +73,8 @@
 </div>
 <div class="section">
 <div class="footer fixed">
-
-  <p>Copyright &copy; <span id="cprtxt" style="font-family: Arial, sans-serif;"></span><span id="cprtxt"> Sameerion</span>. All rights reserved.</p>
+  <p>sameerion was built with determination,  a pinch of procrastination, and some questionable life decisions</p><br><br><br>
+  <p style="font-size: 2em;">Copyright &copy; <span id="cprtxt" style="font-family: Arial, sans-serif;"></span><span id="cprtxt"> Sameerion</span>. All rights reserved.</p>
 </div>
 </div>
 
@@ -76,10 +88,36 @@
     }
   });
 
-  // word changer
+// ---------------scroll down text-----------------------
+
+  let scrollTimeout;
+  const scrollDownText = document.getElementById("scroll-down-text");
+
+  // Function to show scroll down text with fade-in and bobbing effect
+  function showScrollDownText() {
+    scrollDownText.style.display = 'block';
+    setTimeout(() => {
+      scrollDownText.style.opacity = 1;  // Fade in
+    }, 10);  // Slight delay for the fade effect to kick in
+  }
+
+  // Reset the timeout on any scroll activity
+  window.addEventListener('scroll', () => {
+    clearTimeout(scrollTimeout);
+    scrollDownText.style.opacity = 0;  // Fade out on scroll
+    scrollDownText.style.display = 'none';  // Hide text immediately after scroll
+    scrollTimeout = setTimeout(showScrollDownText, 5000); // Show text after 5 seconds of no scroll
+  });
+
+  // Initialize the timeout when the page loads
+  scrollTimeout = setTimeout(showScrollDownText, 5000);
+
+
+
+  // -----------word changer------------------
 
   document.addEventListener("DOMContentLoaded", function () {
-    const words = ["stranger!", "friend!", "explorer!", "learner!", "thinker!", "creator!", "foe..? (please, don't be one)"];
+    const words = ["stranger!", "friend!", "explorer!", "thinker!", "creator!", "wanderer!", "engineer!", "foe..? (please, don't be one)"];
     let currentWordIndex = 0;
     const wordElement = document.getElementById("dynamicWord");
     let wordChangeInterval;
