@@ -38,7 +38,19 @@
     <p>Explore my professional journey or download a copy below.</p>
     <a href="files/resume-sameer.pdf" target="_blank" class="btn btn-primary download-btn">Download Resume</a>
     <br><br><br>
-    <div class="resume-details" id="resumeDetails"></div>
+    <div>
+    <i><b>Education</b></i><br><br>
+    <strong>Masters in Data Science and Computational Analytics</strong>, Bradley University (2022–2024)<br>
+    <strong>Bachelor’s in Electronics and Communication Engineering</strong>, Osmania University (2018–2022)<br><br>
+    <i><b>Work Experience</b></i><br><br>
+    <strong>SQL Developer</strong> (April 2021- July 2021)<br>
+    <strong>AI & Python Intern</strong>, (December 2020- April 2021)<br><br>
+    <i><b>Skills</b></i><br><br>
+    Python (Pandas, NumPy, Scikit-Learn, TensorFlow, Keras), SQL, JavaScript, ReactJS, HTML, CSS<br>
+    Machine Learning: Linear & Logistic Regression, Deep Learning (ANNs, CNNs)<br>
+    Database: SQL, NoSQL, MongoDB<br>
+    Tools: Spark, Git, Tableau, Microsoft Excel, WEKA<br>
+    </div>
   </div>
 </div>
 <div class="section">
@@ -152,56 +164,6 @@
     observer.observe(section); // Observe the section with the dynamic word
   });
 
-  // ---------------typewriter--------------
-
-  const textContent = `
-    <i><b>Education</b></i><br><br>
-    <strong>Masters in Data Science and Computational Analytics</strong>, Bradley University (2022–2024)<br>
-    <strong>Bachelor’s in Electronics and Communication Engineering</strong>, Osmania University (2018–2022)<br><br>
-    <i><b>Work Experience</b></i><br><br>
-    <strong>SQL Developer</strong> (April 2021- July 2021)<br>
-    <strong>AI & Python Intern</strong>, (December 2020- April 2021)<br><br>
-    <i><b>Skills</b></i><br><br>
-    Python (Pandas, NumPy, Scikit-Learn, TensorFlow, Keras), SQL, JavaScript, ReactJS, HTML, CSS<br>
-    Machine Learning: Linear & Logistic Regression, Deep Learning (ANNs, CNNs)<br>
-    Database: SQL, NoSQL, MongoDB<br>
-    Tools: Spark, Git, Tableau, Microsoft Excel, WEKA<br>
-  `;
-
-  const targetElement = document.getElementById("resumeDetails");
-  let charIndex = 0;
-  let isTag = false;
-  let currentTag = "";
-
-  function typeWriter() {
-    if (charIndex < textContent.length) {
-      const currentChar = textContent[charIndex];
-
-      if (currentChar === "<") {
-        // Start of an HTML tag
-        isTag = true;
-        currentTag += currentChar;
-      } else if (currentChar === ">") {
-        // End of an HTML tag
-        currentTag += currentChar;
-        targetElement.innerHTML += currentTag;
-        currentTag = "";
-        isTag = false;
-      } else if (isTag) {
-        // Inside an HTML tag
-        currentTag += currentChar;
-      } else {
-        // Normal text
-        targetElement.innerHTML += currentChar;
-      }
-
-      charIndex++;
-      setTimeout(typeWriter, 35); // Adjust speed as needed
-    }
-  }
-
-  // Trigger the animation after a slight delay
-  setTimeout(typeWriter, 1000);
 
 
 </script>
