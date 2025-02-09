@@ -2,16 +2,19 @@ import StarIcon from '@/assets/icons/star.svg'
 import { Fragment } from 'react';
 
 const words = [
-  "Impeccable",
-  "Bold",
-  "Ferocious",
-  "Spirited",
-  "Timeless",
-  "Creative",
-  "Sublime",
-  "damned",
-  "mining",
-  "crafting"
+  "Relentless",
+  "Ingenious",
+  "Tenacious",
+  "Pioneering",
+  "Resolute",
+  "Electric",
+  "Uncharted",
+  "Voyager",
+  "Eccentric",
+  "Calculated",
+  "Unyielding",
+  "Tactical",
+  "Adaptive"
 ];
 
 export const TapeSection = () => {
@@ -19,7 +22,7 @@ export const TapeSection = () => {
     <div className='py-16 lg:py-24 overflow-x-clip'>
       <div className='bg-gradient-to-r from-purple-600 to-rose-600 rotate-3 -mx-1'>
         <div className='flex [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]'>
-          <div className='flex flex-none gap-4 py-3 animate-move-right [animation-duration:30s]'>
+          <div className='flex flex-none gap-4 py-3 pr-4 animate-move-right [animation-duration:30s]'>
             {[...new Array(2)].fill(0).map((_, idx) => (
               <Fragment key={idx}>
                 {words.map(word => (

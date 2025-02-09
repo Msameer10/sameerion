@@ -7,10 +7,21 @@ import HTMLIcon from '@/assets/icons/html5.svg';
 import CSSIcon from '@/assets/icons/css3.svg';
 import ReactIcon from '@/assets/icons/react.svg';
 import GithubIcon from '@/assets/icons/github.svg';
+import GitIcon from '@/assets/icons/git.svg'
+import PyIcon from '@/assets/icons/python.svg'
+import SQLIcon from '@/assets/icons/sql.svg'
+import NoSQLIcon from '@/assets/icons/nosql.svg'
+import MLIcon from '@/assets/icons/machinelearning.svg'
+import AIIcon from '@/assets/icons/artintelligence.svg'
+import ExcelIcon from '@/assets/icons/excel.svg'
+import PyScriptIcon from '@/assets/icons/pyScript.svg'
+import TypescriptIcon from '@/assets/icons/typescript.svg'
+import NextJSIcon from '@/assets/icons/nextjs.svg'
 import mapImage from "@/assets/images/map.png"
 import smileMemoji from "@/assets/images/memoji-smile.png"
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
+import { title } from "process";
 
 const toolboxItems = [
   {
@@ -32,6 +43,53 @@ const toolboxItems = [
   {
     title: 'Github',
     iconType: GithubIcon,
+  },
+  {
+    title: 'Git',
+    iconType: GitIcon,
+  },
+  {
+    title: 'Python',
+    iconType: PyIcon,
+  },
+  {
+    title: 'SQL',
+    iconType: SQLIcon,
+  },
+  {
+    title: 'NoSQL',
+    iconType: NoSQLIcon,
+  },{
+    title: 'Machine Learning',
+    iconType: MLIcon,
+  },
+  {
+    title: 'Artifical Intelligence',
+    iconType: AIIcon,
+  },
+  {
+    title: 'Excel',
+    iconType: ExcelIcon,
+  },
+  {
+    title: 'Jupyter',
+    iconType: PyScriptIcon,
+  },
+  {
+    title: 'PyCharm',
+    iconType: PyScriptIcon,
+  },
+  {
+    title: 'Deep Learning',
+    iconType: AIIcon,
+  },
+  {
+    title: 'TypeScript',
+    iconType: TypescriptIcon,
+  },
+  {
+    title: 'NextJS',
+    iconType: NextJSIcon,
   },
 ]
 

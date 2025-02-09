@@ -24,17 +24,26 @@ export const HeroSection = () => {
         <HeroOrbit size={430} rotation={-15} shouldOrbit orbitDuration='30s' shouldSpin spinDuration='3s'>
           <SparkleIcon className="size-8 text-rose-500/20"/>
         </HeroOrbit>
+        <HeroOrbit size={430} rotation={25} shouldOrbit orbitDuration='30s' shouldSpin spinDuration='3s'>
+          <SparkleIcon className="size-8 text-indigo-600/40"/>
+        </HeroOrbit>
         <HeroOrbit size={440} rotation={80} shouldOrbit orbitDuration='32s' shouldSpin spinDuration='3s'>
           <SparkleIcon className="size-5 text-rose-500/20"/>
         </HeroOrbit>
         <HeroOrbit size={520} rotation={-45} shouldOrbit orbitDuration='34s'>
           <div className='size-2 rounded-full bg-rose-500/20'></div>
         </HeroOrbit>
+        <HeroOrbit size={520} rotation={175} shouldOrbit orbitDuration='34s'>
+          <div className='size-2 rounded-full bg-indigo-500/20'></div>
+        </HeroOrbit>
         <HeroOrbit size={530} rotation={180} shouldOrbit orbitDuration='36s' shouldSpin spinDuration='3s'>
           <SparkleIcon className="size-10 text-rose-500/20"/>
         </HeroOrbit>
         <HeroOrbit size={550} rotation={20} shouldOrbit orbitDuration='38s' shouldSpin spinDuration='6s'>
           <StarIcon className="size-12 text-rose-600"/>
+        </HeroOrbit>
+        <HeroOrbit size={550} rotation={80} shouldOrbit orbitDuration='38s' shouldSpin spinDuration='6s'>
+          <StarIcon className="size-12 text-indigo-600/70"/>
         </HeroOrbit>
         <HeroOrbit size={590} rotation={100} shouldOrbit orbitDuration='40s' shouldSpin spinDuration='6s'>
           <StarIcon className="size-8 text-rose-600"/>
@@ -52,7 +61,7 @@ export const HeroSection = () => {
           <div className='size-3 rounded-full bg-rose-500/20'></div>
         </HeroOrbit>
         <HeroOrbit size={800} rotation={-70} shouldOrbit orbitDuration='50s' shouldSpin spinDuration='6s'>
-          <StarIcon className="size-28 text-rose-600"/>
+          <StarIcon className="size-28 text-indigo-600"/>
         </HeroOrbit>
       </div>
     <div className="container">
