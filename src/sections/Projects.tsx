@@ -43,7 +43,7 @@ const portfolioProjects = [
       { title: "Improved site speed by 50%" },
       { title: "Increased mobile traffic by 35%" },
     ],
-    link: "https://youtu.be/Z7I5uSRHMHg",
+    link: "#",
     image: aiStartupLandingPage,
   },
 ];
@@ -60,7 +60,7 @@ export const ProjectsSection = () => {
           }}>
             <div className="lg:grid lg:grid-cols-2 lg:gap-16">
               <div className="lg:pb-16">
-                <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-2 text-transparent bg-clip-text font-bold uppercase tracking-widest text-sm">
+                <div className="bg-gradient-to-r from-rose-600 to-purple-600 inline-flex gap-2 text-transparent bg-clip-text font-bold uppercase tracking-widest text-sm">
                   <span>{project.company}</span>
                   <span>&bull;</span>
                   <span>{project.year}</span>

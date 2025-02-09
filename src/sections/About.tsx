@@ -1,3 +1,4 @@
+"use client";
 import { Card } from "@/components/Cards";
 import { SectionHeader } from "@/components/SectionHeader";
 import minecraftImage from '@/assets/images/minecraft.png';
@@ -21,7 +22,8 @@ import mapImage from "@/assets/images/map.png"
 import smileMemoji from "@/assets/images/memoji-smile.png"
 import { CardHeader } from "@/components/CardHeader";
 import { ToolboxItems } from "@/components/ToolboxItems";
-import { title } from "process";
+import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
 
 const toolboxItems = [
   {
@@ -145,19 +147,22 @@ const hobbies = [
 ]
 
 export const AboutSection = () => {
+  const constraintRef = useRef(null);
   return <div className="py-20 lg:py-28">
     <div className="container">
       <SectionHeader opening="About Me" title="A Glimpse into my World" description="Learn more about who I am, what I do, and what inspires me." />
       <div className="mt-20 flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
           <Card className="h-[320px] md:col-span-2 lg:col-span-1">
-            <CardHeader title="Virtual Realms" description="Immersing in stories and challenges of games."/>
-            <div className="w-40 mx-auto mt-2 md:mt-0">
-              <Image src={minecraftImage} alt="Book cover" />
-            </div>
+            <a href="https://msameer10.github.io/tashriiwaluhati/" target="_blank">
+              <CardHeader title="Virtual Realms" description="Immersing in stories and challenges of games."/>
+              <div className="w-40 mx-auto mt-2 md:mt-0">
+                <Image src={minecraftImage} alt="Book cover" />
+              </div>
+            </a>
           </Card>
           <Card className="h-[320px]  md:col-span-3 lg:col-span-2">
-            <CardHeader title="My Toolbox" description="Explore the technologies and tools I use to crafy exceptional digital experiences."/>
+            <CardHeader title="My Toolbox" description="Explore the technologies and tools I use to craft exceptional digital experiences."/>
             <ToolboxItems items={toolboxItems} itemsWrapperClassName="animate-move-left [animation-duration:30s]"/>
             <ToolboxItems items={toolboxItems} itemsWrapperClassName="animate-move-right [animation-duration:15s]" className="mt-6"/>
           </Card>
@@ -165,16 +170,19 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
           <Card className="h-[320px] p-0 flex flex-col md:col-span-3 lg:col-span-2">
             <CardHeader title="Beyond the Code" description="Explore my interests and hobbies beyond the digital realm." className="px-6 py-6"/>
-            <div className="relative flex-1">
+            <div className="relative flex-1" ref={constraintRef}>
               {hobbies.map(hobby => (
-                <div key={hobby.title} className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-purple-600 to-rose-600 rounded-full py-1.5 absolute"
+                <motion.div key={hobby.title} className="inline-flex items-center gap-2 px-6 bg-gradient-to-r from-purple-600 to-rose-600 rounded-full py-1.5 absolute"
                 style={{
                   left: hobby.left,
                   top: hobby.top,
-                }}>
+                }}
+                  drag
+                  dragConstraints={constraintRef}
+                >
                   <span className="font-medium text-gray-950">{hobby.title}</span>
                   <span>{hobby.emoji}</span>
-                </div>
+                </motion.div>
               ))}
             </div>
           </Card>
