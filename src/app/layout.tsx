@@ -1,9 +1,18 @@
 import type { Metadata } from "next";
-import {Inter, Calistoga,} from 'next/font/google';
+import {Inter, Calistoga,Cinzel } from 'next/font/google';
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans"});
+const cinzel = Cinzel({
+  subsets: ["latin"],
+  variable: "--font-cinzel",
+})
+
+const inter = Inter({ 
+  subsets: ["latin"], 
+  variable: "--font-sans"
+});
+
 const calistoga = Calistoga({
   subsets: ["latin"],
   variable: "--font-serif",
@@ -12,7 +21,7 @@ const calistoga = Calistoga({
 
 export const metadata: Metadata = {
   title: "Sameerion",
-  description: "A peek on to my world!",
+  description: "A journey into my world!",
 };
 
 export default function RootLayout({
@@ -25,6 +34,7 @@ export default function RootLayout({
       <body className={twMerge(
         inter.variable,
         calistoga.variable,
+        cinzel.variable,
         "bg-gray-900 text-white antialiased font-sans"
         )}>{children}</body>
     </html>

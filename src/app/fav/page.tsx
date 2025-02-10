@@ -43,8 +43,8 @@ export default function FavPage() {
     return (
         <div className="flex flex-col min-h-screen">
             <main className="flex-grow container">
-                <h1 className="font-serif text-center text-3xl py-4 cinzel.variable"><span className="text-rose-600">Sameerion</span><span className="text-base text-purple-600">.com</span></h1>
-                <h2 className="font-serif text-center pt-4 pb-8 md:pt-8 md:pb-16 text-lg md:text-xl text-gradient">A Collection of My Gaming Moments</h2>
+                <h1 className="font-serif text-center text-3xl py-4 font-cinzel"><span className="text-rose-600">Sameerion</span><span className="text-base text-purple-600">.com</span></h1>
+                <h2 className="font-semibold text-center pt-4 pb-8 md:pt-8 md:pb-16 text-lg md:text-xl text-gradient">A Collection of My Gaming Moments</h2>
                 <div>
                     <ul className="mx-10 md:mx-40 mb-20 md:mb-40 list-disc">
                         {items.map((item, index) => (

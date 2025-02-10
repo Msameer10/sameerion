@@ -7,6 +7,7 @@ const config: Config = {
     "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/fav/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
@@ -25,6 +26,7 @@ const config: Config = {
       fontFamily:{
         sans: 'var(--font-sans)',
         serif: 'var(--font-serif)',
+        cinzel: 'var(--font-cinzel)',
       },
       animation: {
         'ping-large': 'ping-large 1s ease-in-out infinite',
