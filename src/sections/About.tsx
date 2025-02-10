@@ -157,11 +157,11 @@ export const AboutSection = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
           <Card className="h-[320px] md:col-span-2 lg:col-span-1">
             <a href="/fav" target="_blank">
-              <CardHeader title="Virtual Realms" description="Immersing in stories and challenges of games."/>
+              <CardHeader title="Virtual Realms" description="Discover the games I've experienced."/>
               <div className="w-40 mx-auto mt-2 md:mt-0 relative">
-                <Image src={eldenringImage} alt="Elden Ring logo" className="relative top-[-20px] right-[70px] w-full opacity-80 transform rotate-[-20deg]" />
-                <Image src={minecraftImage} alt="Minecraft block" className="absolute top-[-20px] left-[40px] w-full transform rotate-[10deg]" />
-                <Image src={assassinscreedImage} alt="Assassin's Creed logo" className="absolute right-5 top-[-15px] w-full transform rotate-[-15deg]" />
+                <Image src={eldenringImage} alt="Elden Ring logo" className="relative top-[-20px] right-[80px] md:right-[70px] w-full opacity-80 transform rotate-[-20deg]" />
+                <Image src={minecraftImage} alt="Minecraft block" className="absolute top-[-20px] left-[60px] md:left-[40px] w-full transform rotate-[10deg]" />
+                <Image src={assassinscreedImage} alt="Assassin's Creed logo" className="absolute right-5 md:right-5 top-[-15px] w-full transform rotate-[-15deg]" />
               </div>
             </a>
           </Card>
