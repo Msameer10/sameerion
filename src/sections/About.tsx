@@ -156,7 +156,7 @@ export const AboutSection = () => {
       <div className="mt-20 flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5 lg:grid-cols-3">
           <Card className="h-[320px] md:col-span-2 lg:col-span-1">
-            <a href="https://msameer10.github.io/tashriiwaluhati/" target="_blank">
+            <a href="/fav" target="_blank">
               <CardHeader title="Virtual Realms" description="Immersing in stories and challenges of games."/>
               <div className="w-40 mx-auto mt-2 md:mt-0 relative">
                 <Image src={eldenringImage} alt="Elden Ring logo" className="relative top-[-20px] right-[70px] w-full opacity-80 transform rotate-[-20deg]" />

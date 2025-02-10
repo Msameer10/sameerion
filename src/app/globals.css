@@ -16,4 +16,8 @@
     .container{
         @apply lg:max-w-5xl;
     }
+
+    .text-gradient {
+        @apply bg-gradient-to-r from-purple-600 to-rose-600 bg-clip-text text-transparent;
+    }
 }
