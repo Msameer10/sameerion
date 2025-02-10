@@ -48,7 +48,7 @@ export default function FavPage() {
                 <div>
                     <ul className="mx-10 md:mx-40 mb-20 md:mb-40 list-disc">
                         {items.map((item, index) => (
-                            <li key={index} className="text-base md:text-lg lg:text-2xl font-semibold">{item}</li>
+                            <li key={index} className="text-base md:text-lg lg:text-xl font-semibold">{item}</li>
                         ))}
                     </ul>
                 </div>
