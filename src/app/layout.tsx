@@ -1,27 +1,22 @@
 import type { Metadata } from "next";
-import {Inter, Calistoga, Cinzel} from 'next/font/google';
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 
-const cinzel = Cinzel({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-cinzel",
-})
-
-const inter = Inter({ 
-  subsets: ["latin"], 
-  variable: "--font-sans"
+  variable: "--font-sans",
 });
 
-const calistoga = Calistoga({
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-serif",
-  weight: ["400"],
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
   title: "Sameerion",
-  description: "A journey into my world!",
+  description: "An immersive portfolio journey through the worlds of Sameer Mohammad.",
 };
 
 export default function RootLayout({
@@ -31,12 +26,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={twMerge(
-        inter.variable,
-        calistoga.variable,
-        cinzel.variable,
-        "bg-gray-900 text-white antialiased font-sans"
-        )}>{children}</body>
+      <body
+        className={twMerge(
+          manrope.variable,
+          cormorant.variable,
+          "bg-[#05070c] text-white antialiased font-sans"
+        )}
+      >
+        {children}
+      </body>
     </html>
   );
 }
