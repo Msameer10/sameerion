@@ -16,7 +16,7 @@ const cormorant = Cormorant_Garamond({
 
 export const metadata: Metadata = {
   title: "Sameerion",
-  description: "An immersive portfolio journey through the worlds of Sameer Mohammad.",
+  description: "Portfolio of Sameer Mohammad, focused on data engineering, analytics, and full stack development.",
 };
 
 export default function RootLayout({

@@ -69,7 +69,11 @@ export function ImmersivePortfolio() {
       <CursorSystem mode={cursorMode} />
       <NavDots activeId={activeWorld} onNavigate={scrollToWorld} />
       <div ref={containerRef} className="h-svh snap-y snap-mandatory overflow-y-auto overflow-x-hidden scroll-smooth">
-        <OriginWorld introDone onEnterWork={() => scrollToWorld("world-resume")} />
+        <OriginWorld
+          introDone
+          onViewWork={() => scrollToWorld("world-work")}
+          onContact={() => scrollToWorld("world-connect")}
+        />
         <ResumeWorld />
         <WorkWorld />
         <ConnectWorld />

@@ -1,10 +1,12 @@
-"use client";
+﻿"use client";
 
 import { contactLinks } from "@/data/portfolio";
 import { connectShootingStars, connectStars } from "@/lib/immersive";
 import { WorldSection } from "./WorldSection";
 
 export function ConnectWorld() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <WorldSection
       id="world-connect"
@@ -44,51 +46,48 @@ export function ConnectWorld() {
         </div>
       }
     >
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center text-center">
-        <p className="text-xs uppercase tracking-[0.42em] text-white/58">Get In Touch</p>
-        <h2 className="mt-4 font-display text-[clamp(3.7rem,8.5vw,7.5rem)] leading-[0.9] tracking-[-0.05em]">
-          <span className="block text-[#b9a6f3]">Let&apos;s</span>
-          <span className="block text-[#f5f0e6]">Talk.</span>
-        </h2>
-        <p className="mt-5 max-w-2xl text-lg italic leading-8 text-[#f5ecff]/70">
-          Whether it&apos;s a collaboration, an opportunity,<br className="hidden md:block" />
-          or just a good conversation &mdash; I&apos;m around.
-        </p>
-        <a
-          href={`mailto:${contactLinks.email}`}
-          className="connect-mail-button"
-          aria-label="Send an email to Sameer Mohammad"
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            className="connect-mail-icon"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.8"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M4 7.5h16v9A1.5 1.5 0 0 1 18.5 18h-13A1.5 1.5 0 0 1 4 16.5v-9Z" />
-            <path d="m5 8 7 5 7-5" />
-          </svg>
-          <span>Send an Email</span>
-        </a>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 text-sm uppercase tracking-[0.24em] text-white/64">
-          <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" className="connect-social-pill">
-            LinkedIn
-          </a>
-          <a href={contactLinks.github} target="_blank" rel="noreferrer" className="connect-social-pill">
-            GitHub
-          </a>
+      <div className="mx-auto flex w-full max-w-6xl flex-col items-center">
+        <div className="w-full rounded-[2.4rem] border border-white/10 bg-[linear-gradient(135deg,rgba(145,86,255,0.95),rgba(205,83,171,0.94),rgba(238,55,88,0.94))] p-[1px] shadow-[0_26px_90px_rgba(0,0,0,0.32)]">
+          <div className="rounded-[2.35rem] bg-[linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03))] px-7 py-8 backdrop-blur md:px-10 md:py-10 lg:px-12 lg:py-11">
+            <div className="flex flex-col gap-7 md:flex-row md:items-center md:justify-between md:gap-10">
+              <div className="max-w-2xl text-left">
+                <h2 className="font-display text-[clamp(2.4rem,5vw,4.3rem)] leading-[0.92] tracking-[-0.05em] text-[#130814]">
+                  Let&apos;s Connect
+                </h2>
+                <p className="mt-3 text-sm leading-7 text-[#221228]/82 md:text-base">
+                  Open to opportunities, collaborations, and professional conversations.
+                </p>
+              </div>
+              <a
+                href={`mailto:${contactLinks.email}`}
+                className="inline-flex h-14 items-center justify-center rounded-[1.15rem] bg-[#111321] px-7 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#171a2c] md:h-16 md:px-9"
+                aria-label="Send an email to Sameer Mohammad"
+              >
+                Contact Me
+              </a>
+            </div>
+          </div>
         </div>
-        <div className="connect-closing-wrap">
-          <p className="connect-closing-line connect-closing-line-primary connect-closing-line-plain">
-            From a cosmos of ideas to a quiet window in the rain.
-          </p>
-          <p className="connect-closing-line connect-closing-line-secondary">
-            Sameerion - Built with determination, a pinch of procrastination, and some questionable life decisions.
-          </p>
+
+        <div className="mt-40 w-full border-t border-white/10 pt-8">
+          <div className="flex flex-col gap-6 md:grid md:grid-cols-[minmax(0,1.35fr)_auto] md:items-start md:gap-8">
+            <div className="text-left">
+              <p className="max-w-xl text-sm leading-6 text-white/56">
+                Sameerion - built with determination, a pinch of procrastination, and some questionable life decisions (and also maybe a bit of Googling)
+              </p>
+            </div>
+            <div className="flex flex-col gap-4 text-left md:items-end md:text-right">
+              <p className="text-sm text-white/60">&copy; Sameerion {currentYear}. All rights reserved.</p>
+              <div className="flex flex-wrap items-center gap-5 text-sm uppercase tracking-[0.18em] text-white/62 md:justify-end">
+                <a href={contactLinks.linkedin} target="_blank" rel="noreferrer" className="footer-social-link">
+                  LinkedIn
+                </a>
+                <a href={contactLinks.github} target="_blank" rel="noreferrer" className="footer-social-link">
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </WorldSection>

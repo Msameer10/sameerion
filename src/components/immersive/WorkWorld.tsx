@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -34,9 +34,11 @@ function getBatteryTone(level: number) {
 function AppIcon({
   project,
   onOpen,
+  compact = false,
 }: {
   project: ProjectApp;
   onOpen: (project: ProjectApp) => void;
+  compact?: boolean;
 }) {
   const initials = project.name
     .split(" ")
@@ -52,14 +54,60 @@ function AppIcon({
       onClick={() => onOpen(project)}
       className="group flex flex-col items-center gap-2 rounded-[1.4rem] p-1.5 text-center transition duration-300 hover:-translate-y-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
     >
-      <span className="tablet-app-icon">
+      <span className={compact ? "phone-app-icon" : "tablet-app-icon"}>
         <span className="tablet-app-shine" />
         <span className="text-xs font-semibold text-white/90 md:text-sm">{initials}</span>
       </span>
-      <span className="max-w-[4.7rem] text-[0.66rem] leading-4 text-white/82 transition duration-300 group-hover:text-white md:text-[0.7rem]">
+      <span
+        className={`text-white/82 transition duration-300 group-hover:text-white ${
+          compact
+            ? "max-w-[4.2rem] text-[0.62rem] leading-4"
+            : "max-w-[4.7rem] text-[0.66rem] leading-4 md:text-[0.7rem]"
+        }`}
+      >
         {project.name}
       </span>
     </button>
+  );
+}
+
+function DeviceDetail({ project }: { project: ProjectApp }) {
+  return (
+    <>
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p className="text-[0.62rem] uppercase tracking-[0.34em] text-[#cabcf5]/72">
+            {project.badge} / {project.status}
+          </p>
+          <h3 className="mt-1.5 text-sm font-semibold text-white md:text-base">{project.name}</h3>
+        </div>
+        <span className="rounded-full border border-white/10 px-2.5 py-1 text-[0.55rem] uppercase tracking-[0.26em] text-white/55">
+          Summary
+        </span>
+      </div>
+      <p className="mt-2 text-xs leading-5 text-white/64 md:text-[0.82rem]">{project.summary}</p>
+      {project.bullets.length > 0 ? (
+        <ul className="mt-4 space-y-2 text-sm leading-6 text-white/70">
+          {project.bullets.map((bullet) => (
+            <li key={bullet} className="resume-bullet">
+              {bullet}
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      <div className="mt-5 flex flex-wrap gap-3">
+        {project.link ? (
+          <a
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="world-button world-button-primary !h-11 !px-5 !text-sm"
+          >
+            View Project
+          </a>
+        ) : null}
+      </div>
+    </>
   );
 }
 
@@ -129,12 +177,12 @@ export function WorkWorld() {
     () => [
       { label: "LinkedIn", href: contactLinks.linkedin },
       { label: "GitHub", href: contactLinks.github },
-      { label: "Resume", href: "/resume" },
+      { label: "Resume", href: "/sameerResume.docx" },
     ],
     []
   );
 
-  const stableProject = projectApps.find((project) => project.name === "Sameerion") ?? projectApps[0];
+  const stableProject = selectedProject ?? projectApps[0];
 
   return (
     <WorldSection
@@ -163,22 +211,17 @@ export function WorkWorld() {
         </div>
       }
     >
-      <div className="mx-auto flex w-full max-w-[82rem] flex-col items-center gap-7 lg:gap-8">
-        <div className="max-w-3xl text-center">
-          <p className="mb-3 text-xs uppercase tracking-[0.4em] text-[#c9bbff]/75">
-            Selected Builds
-          </p>
-          <h2 className="font-display text-[clamp(1.95rem,4vw,3.35rem)] tracking-[-0.04em] text-white">
-            Click into the projects, concepts, and active experiments.
+      <div className="mx-auto flex w-full max-w-[94rem] flex-col items-center gap-6 lg:gap-7">
+        <div className="max-w-xl text-center">
+          <p className="mb-2 text-[0.7rem] uppercase tracking-[0.38em] text-[#c9bbff]/75 md:text-xs">Featured Projects</p>
+          <h2 className="font-display text-[clamp(1.35rem,2.4vw,1.95rem)] tracking-[-0.04em] text-white">
+            A concise selection of work across analytics, machine learning, and full stack development.
           </h2>
-          <p className="mt-4 max-w-2xl text-balance text-base leading-7 text-white/68 md:mx-auto">
-            Pick an app, read the summary, and jump straight to the project where it exists.
-          </p>
         </div>
 
-        <div className="work-composition">
-          <div className="work-tablet-wrap order-1 lg:order-2">
-            <div className="tablet-shell tablet-shell-large">
+        <div className="w-full">
+          <div className="mx-auto hidden max-w-[86rem] md:block">
+            <div className="tablet-shell tablet-shell-large device-shell-tablet mx-auto w-full max-w-[min(88vw,84rem)] px-5 pb-7 pt-5 lg:px-8 lg:pb-8 lg:pt-6">
               <div className="tablet-status-bar">
                 <span>{statusText || "Tue, Mar 19, 7:18 AM"}</span>
                 <div className="flex items-center gap-2 text-white/80">
@@ -197,7 +240,7 @@ export function WorkWorld() {
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%,transparent_82%,rgba(255,255,255,0.04))]" />
               </div>
 
-              <div className="relative z-10 mt-8 grid grid-cols-3 gap-2.5 md:mt-10 md:gap-3.5">
+              <div className="relative z-10 mt-10 grid grid-cols-3 gap-8 lg:mt-12 lg:gap-10">
                 {projectApps.map((project) => (
                   <AppIcon key={project.name} project={project} onOpen={setSelectedProject} />
                 ))}
@@ -211,42 +254,21 @@ export function WorkWorld() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.985 }}
                     transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                    className="latest-build-widget latest-build-widget-tablet"
+                    className="latest-build-widget latest-build-widget-tablet mt-7"
                   >
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-[0.62rem] uppercase tracking-[0.34em] text-[#cabcf5]/72">
-                          {selectedProject.badge} / {selectedProject.status}
-                        </p>
-                        <h3 className="mt-1.5 text-sm font-semibold text-white md:text-base">
-                          {selectedProject.name}
-                        </h3>
-                      </div>
-                      <span className="rounded-full border border-white/10 px-2.5 py-1 text-[0.55rem] uppercase tracking-[0.26em] text-white/55">
-                        Active Widget
-                      </span>
-                    </div>
-                    <p className="mt-2 text-xs leading-5 text-white/64 md:text-[0.82rem]">
-                      {selectedProject.summary}
-                    </p>
+                    <DeviceDetail project={selectedProject} />
                   </motion.div>
                 )}
               </AnimatePresence>
 
-              <div className="tablet-dock">
+              <div className="tablet-dock mt-7">
                 {dockLinks.map((link) =>
                   link.href.startsWith("/") ? (
                     <Link key={link.label} href={link.href} className="tablet-dock-link">
                       {link.label}
                     </Link>
                   ) : (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="tablet-dock-link"
-                    >
+                    <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="tablet-dock-link">
                       {link.label}
                     </a>
                   )
@@ -255,45 +277,55 @@ export function WorkWorld() {
             </div>
           </div>
 
-          <div className="work-panel work-panel-static order-2 lg:order-1">
-            <div className="flex flex-col gap-5 md:flex-row md:items-center">
-              <div className="flex-1">
-                <div className="mb-3 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.28em] text-[#d6c9ff]/75">
-                  {stableProject.badge} / {stableProject.status}
+          <div className="mx-auto w-full max-w-[26rem] md:hidden">
+            <div className="phone-shell device-shell-phone">
+              <div className="phone-notch" />
+              <div className="tablet-status-bar phone-status-bar">
+                <span>{statusText || "Tue, Mar 19, 7:18 AM"}</span>
+                <div className="flex items-center gap-2 text-white/80">
+                  <span>{battery.supported ? `${battery.level}%` : "Battery --"}</span>
                 </div>
-                <h3 className="font-display text-[clamp(2.2rem,4.2vw,3.2rem)] tracking-[-0.04em] text-white">
-                  {stableProject.name}
-                </h3>
-                <p className="mt-4 text-base leading-7 text-white/76">{stableProject.detail}</p>
               </div>
-              {stableProject.image ? (
-                <div className="relative h-40 overflow-hidden rounded-[1.5rem] border border-white/10 bg-black/20 md:w-64">
-                  <Image
-                    src={stableProject.image}
-                    alt={stableProject.name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="flex h-40 items-center justify-center rounded-[1.5rem] border border-white/10 bg-[radial-gradient(circle_at_top,rgba(143,102,255,0.18),transparent_60%),rgba(255,255,255,0.03)] px-6 text-center text-sm text-white/58 md:w-64">
-                  Portfolio overview.
-                </div>
-              )}
-            </div>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {stableProject.link ? (
-                <a
-                  href={stableProject.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="world-button world-button-primary !h-11 !px-5 !text-sm"
-                >
-                  Open Project
-                </a>
-              ) : null}
-              <Link href="/resume" className="world-button world-button-secondary !h-11 !px-5 !text-sm">
-                View Resume
-              </Link>
+
+              <div className="tablet-wallpaper phone-wallpaper">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_20%,rgba(166,112,255,0.22),transparent_28%),radial-gradient(circle_at_76%_18%,rgba(89,165,255,0.18),transparent_24%),linear-gradient(160deg,rgba(10,13,24,0.97),rgba(8,11,18,0.92))]" />
+                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),transparent_18%,transparent_82%,rgba(255,255,255,0.04))]" />
+              </div>
+
+              <div className="relative z-10 mt-12 grid grid-cols-3 gap-4 px-1">
+                {projectApps.map((project) => (
+                  <AppIcon key={project.name} project={project} onOpen={setSelectedProject} compact />
+                ))}
+              </div>
+
+              <AnimatePresence mode="wait">
+                {selectedProject && (
+                  <motion.div
+                    key={`${selectedProject.name}-mobile`}
+                    initial={{ opacity: 0, y: 10, scale: 0.985 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 8, scale: 0.985 }}
+                    transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+                    className="latest-build-widget mt-6"
+                  >
+                    <DeviceDetail project={selectedProject} />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <div className="tablet-dock mt-6">
+                {dockLinks.map((link) =>
+                  link.href.startsWith("/") ? (
+                    <Link key={link.label} href={link.href} className="tablet-dock-link">
+                      {link.label}
+                    </Link>
+                  ) : (
+                    <a key={link.label} href={link.href} target="_blank" rel="noreferrer" className="tablet-dock-link">
+                      {link.label}
+                    </a>
+                  )
+                )}
+              </div>
             </div>
           </div>
         </div>

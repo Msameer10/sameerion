@@ -1,7 +1,6 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { useMemo } from "react";
 import { heroContent } from "@/data/portfolio";
@@ -10,10 +9,11 @@ import { WorldSection } from "./WorldSection";
 
 type OriginWorldProps = {
   introDone: boolean;
-  onEnterWork: () => void;
+  onViewWork: () => void;
+  onContact: () => void;
 };
 
-export function OriginWorld({ introDone, onEnterWork }: OriginWorldProps) {
+export function OriginWorld({ introDone, onViewWork, onContact }: OriginWorldProps) {
   const orbitalDots = useMemo(
     () => [
       { size: 360, angle: 40, color: "rgba(211,141,252,0.95)", duration: "12s" },
@@ -56,11 +56,7 @@ export function OriginWorld({ introDone, onEnterWork }: OriginWorldProps) {
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
             {[360, 500, 640, 760].map((size) => (
-              <div
-                key={size}
-                className="origin-ring"
-                style={{ width: `${size}px`, height: `${size}px` }}
-              />
+              <div key={size} className="origin-ring" style={{ width: `${size}px`, height: `${size}px` }} />
             ))}
             {orbitalDots.map((dot, index) => (
               <div
@@ -109,32 +105,22 @@ export function OriginWorld({ introDone, onEnterWork }: OriginWorldProps) {
       }
     >
       <div className="mx-auto flex w-full max-w-4xl flex-col items-center justify-center text-center">
-        <motion.p
-          initial={{ opacity: 0, x: -28 }}
-          animate={introDone ? { opacity: 1, x: 0 } : { opacity: 0, x: -28 }}
-          transition={{ duration: 0.65, delay: 0.1 }}
-          className="origin-greeting mb-5 text-base uppercase tracking-[0.34em] text-[#f0ecff]/88 md:text-lg"
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+          transition={{ duration: 0.7, delay: 0.16 }}
+          className="space-y-1"
         >
-          {heroContent.greeting}
-        </motion.p>
-        <div className="flex flex-col items-center leading-[0.92]">
-          <h1 className="font-display text-[clamp(4rem,13vw,9rem)] tracking-[-0.04em]">
-            <span className="hero-gradient">{heroContent.firstName}</span>
+          <p className="text-lg text-white/86 md:text-[1.55rem]">Hi, I&apos;m</p>
+          <h1 className="font-display text-[clamp(3.5rem,9vw,6.4rem)] leading-[0.95] tracking-[-0.05em] text-white">
+            <span className="hero-gradient">Sameer</span> Mohammad
           </h1>
-          <motion.h2
-            initial={{ opacity: 0, y: 46 }}
-            animate={introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 46 }}
-            transition={{ duration: 0.7, delay: 0.18 }}
-            className="font-display text-[clamp(3rem,10vw,7rem)] tracking-[-0.04em] text-white"
-          >
-            {heroContent.lastName}
-          </motion.h2>
-        </div>
+        </motion.div>
         <motion.p
           initial={{ opacity: 0, y: 28 }}
           animate={introDone ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
           transition={{ duration: 0.7, delay: 0.28 }}
-          className="mt-5 max-w-2xl text-balance text-lg text-[#efe7d7]/88 md:text-2xl"
+          className="mt-6 max-w-2xl text-balance text-lg text-[#efe7d7]/88 md:text-2xl"
         >
           {heroContent.role}
         </motion.p>
@@ -152,12 +138,12 @@ export function OriginWorld({ introDone, onEnterWork }: OriginWorldProps) {
           transition={{ duration: 0.65, delay: 0.42 }}
           className="mt-9 flex flex-col gap-4 sm:flex-row"
         >
-          <button type="button" onClick={onEnterWork} className="world-button world-button-primary">
-            {heroContent.primaryCta.label}
+          <button type="button" onClick={onViewWork} className="world-button world-button-primary">
+            View my Work
           </button>
-          <Link href={heroContent.secondaryCta.href} className="world-button world-button-secondary">
-            {heroContent.secondaryCta.label}
-          </Link>
+          <button type="button" onClick={onContact} className="world-button world-button-secondary">
+            Contact Me
+          </button>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 12 }}
